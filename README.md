@@ -14,3 +14,5 @@ Right now the keys that are required to be present inside are as follows:
 Don't forget to install the modules required!
 
 `pip3 install -r requirements.txt`
+
+Developing locally? Maybe `ngrok` can help
