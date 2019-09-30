@@ -3,7 +3,7 @@ import requests
 
 
 from dotenv import load_dotenv
-from flask import jsonify, make_response
+
 import os
 import json
 
