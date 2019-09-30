@@ -34,7 +34,7 @@ def handle_message(event):
         elif command.startswith("solve") is True:
             reply_with_text(event, getResults(command.strip("solve ")))
         else:
-            reply_with_text(event, "This command hasn\'t been implemented yet...for now")
+            reply_with_text(event, "This command hasn\'t been implemented yet..")
 
 
 @handler.add(JoinEvent)
