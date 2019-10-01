@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!aaaaaa'
+    return 'Hello World!'
 
 
 @app.route('/callback', methods=['POST'])
