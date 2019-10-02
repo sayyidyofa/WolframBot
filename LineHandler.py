@@ -9,8 +9,21 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage,
-    JoinEvent, LeaveEvent)
+    MessageEvent, TextMessage, TextSendMessage,
+    SourceUser, SourceGroup, SourceRoom,
+    TemplateSendMessage, ConfirmTemplate, MessageAction,
+    ButtonsTemplate, ImageCarouselTemplate, ImageCarouselColumn, URIAction,
+    PostbackAction, DatetimePickerAction,
+    CameraAction, CameraRollAction, LocationAction,
+    CarouselTemplate, CarouselColumn, PostbackEvent,
+    StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
+    ImageMessage, VideoMessage, AudioMessage, FileMessage,
+    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent,
+    MemberJoinedEvent, MemberLeftEvent,
+    FlexSendMessage, BubbleContainer, ImageComponent, BoxComponent,
+    TextComponent, SpacerComponent, IconComponent, ButtonComponent,
+    SeparatorComponent, QuickReply, QuickReplyButton,
+    ImageSendMessage)
 
 load_dotenv(verbose=True)
 line_bot_api = LineBotApi(os.getenv('CHANNEL_ACCESS_TOKEN'))
@@ -31,8 +44,25 @@ def reply_with_image(event_param, reply_image_param):
     )
 
 
+def push_message(destination, message_type, message):
+    if message_type == "text":
+        line_bot_api.push_message(
+            destination, TextSendMessage(text=message)
+        )
+    elif message_type == "image":
+        line_bot_api.push_message(
+            destination, ImageSendMessage(original_content_url=message, preview_image_url=message)
+        )
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    admin_id = "U20d18fa271b64ae292cda9a329b5bad8"
+    msg_source = ""
+    if event.source.type == "group":
+        msg_source = event.source.group_id
+    elif event.source.type == "user":
+        msg_source = event.source.user_id
     profile = line_bot_api.get_profile(event.source.user_id)
     text = str(event.message.text).lower()
     command = text.strip('/')
@@ -42,15 +72,14 @@ def handle_message(event):
             reply_with_text(event, get_help())
         elif command.startswith("solve") is True:
             # TODO: Make the Full Result API more functional (look at WolframAPIClient.py)
+            # TODO:
+
             reply_with_text(event, "Connecting to WolframAlpha...")
             query = command.strip("solve ")
             result_list = get_results(query)
-            reply_with_text(event, "Real Solution:" +
-                            "\n" + " , ".join(result_list[:-1]))# Get all but last element
-            reply_with_text(event, "Graphical Plot:")
-            reply_with_image(event, result_list[-1])
-        elif command.startswith("solvesimple") is True:
-            reply_with_text(event, None)
+            push_message(msg_source, "text", "Real Solution:" + "\n" + " , ".join(result_list[:-1]))# Get all but last element
+            push_message(msg_source, "text", "Graphical plot:")
+            push_message(msg_source, "image", result_list[-1])
         else:
             reply_with_text(event, "This command hasn\'t been implemented yet..")
 

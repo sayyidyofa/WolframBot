@@ -28,6 +28,7 @@ def get_results(input_param, real_solution=True, plot=True):
     :return ret_list: isinya adalah semua real solution, index terakhir berisi url gambar plot
     """
     ret_list = []
+    ret_str = ""
     response = requests.get(
         API_FULL +
         "appid=" + APPID + "&" +
@@ -37,23 +38,18 @@ def get_results(input_param, real_solution=True, plot=True):
     ).json()
     if real_solution is True:
         for pod in response['queryresult']['pods']:
-            if pod['title'] == "Real solutions":
+            if pod['title'] == "Real solutions" or pod['title'] == "Solutions":
                 for subpod in pod['subpods']:
                     ret_list.append(subpod['img']['alt'])
     if plot is True:
         ret_list.append(response['queryresult']['pods'][2]['subpods'][0]['img']['src'])
+    else:
+        for pod in response['queryresult']['pods']:
+            if pod['title'] == "Input":
+                continue
+            else:
 
-
-# TODO: Dua fungsi dibawah tidak dipakai lagi
-def get_real_solution(response):
-    realsolutions = []
-
-    for pod in response['queryresult']['pods']:
-        if pod['title'] == "Real solutions":
-            for subpod in pod['subpods']:
-                realsolutions.append(subpod['img']['alt'])
-    return realsolutions
-
-
-def get_plot(response):
-    return response['queryresult']['pods'][2]['subpods'][0]['img']['src']
+                pass
+            pass
+        pass
+    return ret_list
