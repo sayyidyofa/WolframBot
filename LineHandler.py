@@ -42,9 +42,9 @@ def handle_message(event):
             reply_with_text(event, get_help())
         elif command.startswith("solve") is True:
             # TODO: Make the Full Result API more functional (look at WolframAPIClient.py)
+            reply_with_text(event, "Connecting to WolframAlpha...")
             query = command.strip("solve ")
             result_list = get_results(query)
-            reply_with_text(event, "Connecting to WolframAlpha...")
             reply_with_text(event, "Real Solution:" +
                             "\n" + " , ".join(result_list[:-1])) # Get all but last element
             reply_with_text(event, "Graphical Plot:")
