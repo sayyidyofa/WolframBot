@@ -46,7 +46,7 @@ def handle_message(event):
             query = command.strip("solve ")
             result_list = get_results(query)
             reply_with_text(event, "Real Solution:" +
-                            "\n" + " , ".join(result_list[:-1])) # Get all but last element
+                            "\n" + " , ".join(result_list[:-1]))# Get all but last element
             reply_with_text(event, "Graphical Plot:")
             reply_with_image(event, result_list[-1])
         elif command.startswith("solvesimple") is True:
