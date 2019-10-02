@@ -9,13 +9,9 @@ def get_help(admin=False):
                "\n/mcstatus" \
                "\n/mcplayers"
     return "\nDaftar command:" \
-           "\n/help" \
-           "\n/jadwal klub" \
-           "\n/fact" \
-           "\n/mcstatus" \
-           "\n/mcplayers"
+           "\n/solve: Mencari solusi persamaan kuadrat, contoh input:" \
+           "\n/solve x^2 - y^2 + 1 = 0"
 
-# Wolfram Handler starts here
 
 
 

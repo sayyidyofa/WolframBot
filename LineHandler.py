@@ -2,12 +2,14 @@ import datetime
 import os
 
 from WolframAPIClient import *
+from functions import *
+
 from linebot.exceptions import InvalidSignatureError
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage,
     JoinEvent, LeaveEvent)
 
 load_dotenv(verbose=True)
@@ -22,6 +24,13 @@ def reply_with_text(event_param, reply_text_param):
     )
 
 
+def reply_with_image(event_param, reply_image_param):
+    line_bot_api.reply_message(
+        event_param.reply_token,
+        ImageSendMessage(original_content_url=reply_image_param)
+    )
+
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     profile = line_bot_api.get_profile(event.source.user_id)
@@ -30,9 +39,18 @@ def handle_message(event):
 
     if text.startswith('/') is True:
         if command == "help":
-            reply_with_text(event, "Not built yet!")
+            reply_with_text(event, get_help())
         elif command.startswith("solve") is True:
-            reply_with_text(event, getResults(command.strip("solve ")))
+            # TODO: Make the Full Result API more functional (look at WolframAPIClient.py)
+            query = command.strip("solve ")
+            result_list = get_results(query)
+            reply_with_text(event, "Connecting to WolframAlpha...")
+            reply_with_text(event, "Real Solution:" +
+                            "\n" + " , ".join(result_list[:-1])) # Get all but last element
+            reply_with_text(event, "Graphical Plot:")
+            reply_with_image(event, result_list[-1])
+        elif command.startswith("solvesimple") is True:
+            reply_with_text(event, None)
         else:
             reply_with_text(event, "This command hasn\'t been implemented yet..")
 

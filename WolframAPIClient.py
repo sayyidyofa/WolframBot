@@ -11,7 +11,8 @@ import json
 
 load_dotenv(verbose=True)
 
-API_URL = "http://api.wolframalpha.com/v2/query?"
+API_FULL = "http://api.wolframalpha.com/v2/query?"
+API_SIMPLE = "http://api.wolframalpha.com/v1/simple?"
 APPID = os.getenv("WOLFRAM_APP_ID")
 
 
@@ -19,15 +20,40 @@ def encode_url(string):
     return urllib.parse.quote(string)
 
 
-def getResults(input, format="image,plaintext", output="json"):
+def get_results(input_param, real_solution=True, plot=True):
+    """
+    :param input_param: persamaan yg akan diselesaikan
+    :param real_solution: apakah akar real akan ditampilkan?
+    :param plot: apakah grafik persamaan akan ditampilkan?
+    :return ret_list: isinya adalah semua real solution, index terakhir berisi url gambar plot
+    """
+    ret_list = []
     response = requests.get(
-        API_URL +
+        API_FULL +
         "appid=" + APPID + "&" +
-        "input=" + encode_url(input) + "&" +
-        "format=" + format + "&" +
-        "output=" + output
-    )
-    json_data = json.loads(response.text)
-    print("\n", type(json_data), "\n")
-    print(json_data)
-    return str(json_data)
+        "input=" + encode_url(input_param) + "&" +
+        "format=" + "image,plaintext" + "&" +
+        "output=" + "json"
+    ).json()
+    if real_solution is True:
+        for pod in response['queryresult']['pods']:
+            if pod['title'] == "Real solutions":
+                for subpod in pod['subpods']:
+                    ret_list.append(subpod['img']['alt'])
+    if plot is True:
+        ret_list.append(response['queryresult']['pods'][2]['subpods'][0]['img']['src'])
+
+
+# TODO: Dua fungsi dibawah tidak dipakai lagi
+def get_real_solution(response):
+    realsolutions = []
+
+    for pod in response['queryresult']['pods']:
+        if pod['title'] == "Real solutions":
+            for subpod in pod['subpods']:
+                realsolutions.append(subpod['img']['alt'])
+    return realsolutions
+
+
+def get_plot(response):
+    return response['queryresult']['pods'][2]['subpods'][0]['img']['src']
