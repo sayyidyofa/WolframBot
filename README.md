@@ -1,20 +1,34 @@
 # WolframBot
+___
+LINE Bot connected to Wolfram Alpha API, built with Python 3
 
-### LINE Bot connected to Wolfram Alpha API, built with Python 3
+## Getting Started
+___
+### Prequisites
+-  A Line Account and Line App Installed on Mobile Device
+- Python 3 on your development machine
+- Make sure you read [this](https://developers.line.biz/en/docs/messaging-api/getting-started/)
 
-Still in development, read this before contributing:
+## Deployment
+___
+ You can deploy this on PaaS such as [Heroku](https://www.heroku.com/) or you can also deploy this on your own server, read this for the (tutorial)[https://github.com/luqmansen/WolframBot/edit/master/Deployment.md]
 
-Put a new `.env` file inside the main directory of the code, this file will be hosting the keys and credentials.
-Right now the keys that are required to be present inside are as follows:
 
-- `CHANNEL_ACCESS_TOKEN="..."` LINE Bot access token
-- `CHANNEL_SECRET="..."` LINE Bot channel secret
-- `WOLFRAM_APPID="..."` Wolfram Alpha API Key
+## Build With
+___
+- [Line bot sdk](https://github.com/line/line-bot-sdk-python)
 
-Other useful information can be found on the [wiki](https://github.com/sayyidyofa/WolframBot/wiki)
 
-Don't forget to install the modules required!
+## Contributing
+___
+Please read [Contributing.md](https://github.com/luqmansen/WolframBot/edit/master/Deployment.md) for  details 
 
-`pip3 install -r requirements.txt`
 
-Developing locally? Maybe `ngrok` can help
+## Authors
+__
+- [sayyidyofa](github.com/sayyidyofa)
+
+
+## License
+__ 
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/luqmansen/WolframBot/edit/master/LICENSE.md)
