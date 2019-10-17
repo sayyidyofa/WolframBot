@@ -1,10 +1,13 @@
 """Handler For Flask App"""
 
 from flask import Flask, request, abort
+from flask.logging import create_logger
 from cryptography.exceptions import InvalidSignature
 from LineHandler import handler, os
 
 APP = Flask(__name__)
+LOG = create_logger(APP)
+
 
 @APP.route('/')
 def hello_world():
@@ -20,7 +23,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    APP.logger.info("Request body: " + body)
+    LOG.debug("Request Body:" + body)
 
     # handle webhook body
     try:
