@@ -1,4 +1,4 @@
-# WolframBot
+# WolframBot [![Build Status](https://travis-ci.com/luqmansen/WolframBot.svg?branch=master)](https://travis-ci.com/luqmansen/WolframBot)
 
 LINE Bot connected to Wolfram Alpha API, built with Python 3
 
