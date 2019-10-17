@@ -8,7 +8,7 @@ install:
 before_script:
   - pylint --version
 script:
-  - pylint *.py
+  - pylint *.py --errors-only
 
 notifications:
   email:
