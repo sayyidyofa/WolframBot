@@ -1,28 +1,31 @@
+"""Handler For Flask App"""
+
 from flask import Flask, request, abort
+from cryptography.exceptions import InvalidSignature
+from LineHandler import handler, os
 
-from LineHandler import *
+APP = Flask(__name__)
 
-app = Flask(__name__)
-
-
-@app.route('/')
+@APP.route('/')
 def hello_world():
+    """Hello world function"""
     return 'Hello World! Testing deployer(again)'
 
 
-@app.route('/callback', methods=['POST'])
+@APP.route('/callback', methods=['POST'])
 def callback():
+    """Callback Function"""
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    APP.logger.info("Request body: " + body)
 
     # handle webhook body
     try:
         handler.handle(body, signature)
-    except InvalidSignatureError:
+    except InvalidSignature:
         print("Invalid signature. Please check your channel access token and/or channel secret.")
         abort(400)
 
@@ -30,5 +33,5 @@ def callback():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    PORT = int(os.environ.get('PORT', 5000))
+    APP.run(host='0.0.0.0', port=PORT, debug=True)
