@@ -5,12 +5,14 @@ LINE Bot connected to Wolfram Alpha API, built with Python 3
 ## Getting Started
 
 ### Prequisites
--  A Line Account and Line App Installed on Mobile Device
-- Python 3 on your development machine
-- Make sure you read [this](https://developers.line.biz/en/docs/messaging-api/getting-started/)
+- A LINE Account and LINE App
+- Python 3.7+
+
+### Setting-up
+Please read the [Wiki](https://github.com/sayyidyofa/WolframBot/wiki) for details
 
 ## Deployment
- You can deploy this on PaaS such as [Heroku](https://www.heroku.com/) or you can also deploy this on your own server as Flask app with WSGI
+ This bot can be deployed on PaaS such as [Heroku](https://www.heroku.com/) or on-premise as Flask app with WSGI
 
 
 ## Built With
