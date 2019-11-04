@@ -25,11 +25,13 @@ Please read the [Wiki](https://github.com/sayyidyofa/WolframBot/wiki) for detail
 Please read the [Wiki](https://github.com/sayyidyofa/WolframBot/wiki) for details 
 
 
-## Authors
-- [sayyidyofa](https://github.com/sayyidyofa)
-- [luqmansen](https://github.com/luqmansen)
+## Contributors
 
-See also the list of [contributors](https://github.com/sayyidyofa/WolframBot/graphs/contributors) who participated in this project
+<a href="https://github.com/sayyidyofa/WolframBot/graphs/contributors">
+  <img src="https://contributors-img.firebaseapp.com/image?repo=sayyidyofa/WolframBot" />
+</a>
+
+
 
 
 ## License
