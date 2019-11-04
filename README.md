@@ -21,11 +21,11 @@ LINE Bot connected to Wolfram Alpha API, built with Python 3
 Please read [Contributing.md](https://github.com/luqmansen/WolframBot/blob/master/Contributing.md) for  details 
 
 
-## Authors
-- [sayyidyofa](github.com/sayyidyofa)
-- [luqmansen](github.com/luqmansen)
+## Contributors
 
-See also the list of [contributors](https://github.com/luqmansen/WolframBot/graphs/contributors) who participated in this project
+<a href="https://github.com/sayyidyofa/WolframBot/graphs/contributors">
+  <img src="https://contributors-img.firebaseapp.com/image?repo=sayyidyofa/WolframBot" />
+</a>
 
 
 ## License
