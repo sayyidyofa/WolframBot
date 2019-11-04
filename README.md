@@ -1,3 +1,5 @@
+![alt text](https://obs.line-scdn.net/0hh7d46sJ7NxhZTRzuzbtIT3gQPHpqLykTeyt_fXpIYC93fXkgNXhwK31LYCx1L3caYXktfBJNYXome3JLYG55Li4YOyl8fQ/f256x256 "Bot Image")
+
 # WolframBot [![Build Status](https://travis-ci.com/luqmansen/WolframBot.svg?branch=master)](https://travis-ci.com/luqmansen/WolframBot)
 
 LINE Bot connected to Wolfram Alpha API, built with Python 3
@@ -5,20 +7,22 @@ LINE Bot connected to Wolfram Alpha API, built with Python 3
 ## Getting Started
 
 ### Prequisites
--  A Line Account and Line App Installed on Mobile Device
-- Python 3 on your development machine
-- Make sure you read [this](https://developers.line.biz/en/docs/messaging-api/getting-started/)
+- A LINE Account and LINE App
+- Python 3.7+
+
+### Setting-up
+Please read the [Wiki](https://github.com/sayyidyofa/WolframBot/wiki) for details
 
 ## Deployment
- You can deploy this on PaaS such as [Heroku](https://www.heroku.com/) or you can also deploy this on your own server, read this for the [tutorial](https://github.com/luqmansen/WolframBot/blob/master/Deployment.md)
+ This bot can be deployed on PaaS such as [Heroku](https://www.heroku.com/) or on-premise as Flask app with WSGI
 
 
-## Build With
+## Built With
 - [Line bot sdk](https://github.com/line/line-bot-sdk-python)
 
 
 ## Contributing
-Please read [Contributing.md](https://github.com/luqmansen/WolframBot/blob/master/Contributing.md) for  details 
+Please read the [Wiki](https://github.com/sayyidyofa/WolframBot/wiki) for details 
 
 
 ## Contributors
@@ -28,5 +32,7 @@ Please read [Contributing.md](https://github.com/luqmansen/WolframBot/blob/maste
 </a>
 
 
+
+
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/luqmansen/WolframBot/blob/master/LICENSE.md)
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/sayyidyofa/WolframBot/blob/master/LICENSE.md)
