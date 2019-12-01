@@ -41,7 +41,6 @@ def push_message(destination, message_type, message):
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    admin_id = "U20d18fa271b64ae292cda9a329b5bad8"
     msg_source = ""
     if event.source.type == "group":
         msg_source = event.source.group_id
@@ -66,15 +65,3 @@ def handle_message(event):
             push_message(msg_source, "image", result_list[-1])
         else:
             reply_with_text(event, "This command hasn\'t been implemented yet..")
-
-
-@handler.add(JoinEvent)
-def handle_join(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text='Joined this ' + event.source.type))
-
-
-@handler.add(LeaveEvent)
-def handle_leave():
-    print(str(datetime.datetime.utcnow()) + " - Got event: leave group")
