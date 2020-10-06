@@ -10,7 +10,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 line-bot-sdk==1.14.0
 MarkupSafe==1.1.1
-Pillow==6.2.0
+Pillow==7.2.0
 python-dotenv==0.10.3
 requests==2.22.0
 selenium==3.141.0
