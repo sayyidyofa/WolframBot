@@ -4,6 +4,8 @@
 
 LINE Bot connected to Wolfram Alpha API, built with Python 3
 
+This project is made for final college assignment, Component-Based Software Engineering.
+
 ## Getting Started
 
 ### Prequisites
