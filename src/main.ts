@@ -1,17 +1,14 @@
 import {
-    Client,
     middleware,
     MessageEvent,
-    Config,
-    ClientConfig,
     MiddlewareConfig,
     JSONParseError,
     WebhookRequestBody, TextMessage, ReplyableEvent, MessageAPIResponseBase
 } from '@line/bot-sdk';
-import express, {NextFunction, Request, Response} from "express";
+import express, {} from "express";
 import {commandType, helpMessage, lineConfig} from "./constants";
 import {extractCommand, linePromiseReply} from "./functions";
-import {isPromise} from "./utils";
+import {isMARBPRomiseAndNotUndefined} from "./utils";
 
 const server = express();
 
@@ -34,20 +31,20 @@ const handleEvent = ({events}: WebhookRequestBody): Array<Promise<MessageAPIResp
             default:
                 return undefined;
         }
-    }).filter(isPromise);
+    }).filter(isMARBPRomiseAndNotUndefined);
 
 
 
 server.post("/webhook", middleware(<MiddlewareConfig>lineConfig), (req, res) => {
     Promise
         .all(handleEvent(<WebhookRequestBody>req.body))
-        .then(console.dir, console.dir)
+        .then(res.json)
         .catch(reason => {
-            res.status(400)
-            console.error(reason)
+            res.status(400);
+            console.error(reason);
             if (reason instanceof JSONParseError) {
-                res.json(reason)
-            } else res.send(reason)
+                res.json(reason);
+            } else res.send(reason);
         });
 });
 
