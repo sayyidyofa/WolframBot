@@ -7,7 +7,7 @@ Flask==1.1.1
 future==0.17.1
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 line-bot-sdk==1.14.0
 MarkupSafe==1.1.1
 Pillow==8.1.1
