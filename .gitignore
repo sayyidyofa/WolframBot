@@ -1,0 +1,9 @@
+yarn-error.log
+node_modules
+.idea
+.env
+.DS_Store
+dist
+build
+yarn-debug.log
+npm-debug.log
