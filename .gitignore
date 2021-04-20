@@ -7,3 +7,5 @@ dist
 build
 yarn-debug.log
 npm-debug.log
+.vscode
+start.sh
