@@ -55,7 +55,6 @@ def handle_message(event):
             reply_with_text(event, get_help())
         elif command.startswith("solve") is True:
             # TODO: Make the Full Result API more functional (look at WolframAPIClient.py)
-            # TODO:
 
             reply_with_text(event, "Connecting to WolframAlpha...")
             query = command.strip("solve ")
@@ -65,3 +64,5 @@ def handle_message(event):
             push_message(msg_source, "image", result_list[-1])
         else:
             reply_with_text(event, "This command hasn\'t been implemented yet..")
+    else:
+        reply_with_text(event, "Unknown message. Command message should start with '/'. Reply with /help to get more information.")
